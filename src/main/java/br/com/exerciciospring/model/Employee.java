@@ -1,12 +1,15 @@
 package br.com.exerciciospring.model;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
@@ -27,6 +30,9 @@ public class Employee {
 	@Column(name="salary")
 	private BigDecimal salary;
 	
+	@ManyToMany
+	private List<Project> projects = new ArrayList<Project>();
+	
 	public Long getId() {
 		return id;
 	}
@@ -44,6 +50,14 @@ public class Employee {
 	}
 	public void setSalary(BigDecimal salary) {
 		this.salary = salary;
+	}
+	
+	public void addProject(Project project){
+		if(projects.size() > 2){
+			throw new IllegalStateException("Project limit exceeded!");
+		}
+		
+		projects.add(project);
 	}
 	
 	@Override

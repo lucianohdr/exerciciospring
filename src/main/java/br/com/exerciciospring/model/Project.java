@@ -48,6 +48,27 @@ public class Project {
 	}
 	
 	public void addEmployee(Employee employee){
+		if(employees.contains(employee)){
+			throw new IllegalStateException("Employee already added!");
+		}
 		
+		employees.add(employee);
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if(obj == this){
+			return true;
+		}
+		
+		if((obj == null) || (this.getClass() != obj.getClass())){
+			return false;
+		}
+		
+		Project project = (Project) obj;
+		if(this.getId().equals(project.getId())){
+			return true;
+		}
+		return false;
 	}
 }
