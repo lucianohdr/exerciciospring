@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name="employee")
@@ -20,7 +21,10 @@ public class Employee {
 	private Long id;
 	
 	@Column(name="name")
+	@Size(min=2, max=300)
 	private String name;
+	
+	@Column(name="salary")
 	private BigDecimal salary;
 	
 	public Long getId() {

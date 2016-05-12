@@ -1,5 +1,8 @@
 package model;
 
+import javax.persistence.Entity;
+
+@Entity
 public class Project {
 
 	private Long id;
