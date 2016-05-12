@@ -1,4 +1,4 @@
-package model;
+package br.com.exerciciospring.model;
 
 import java.math.BigDecimal;
 
@@ -44,5 +44,23 @@ public class Employee {
 	}
 	public void setSalary(BigDecimal salary) {
 		this.salary = salary;
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if(this == obj){
+			return true;
+		}
+		
+		if((obj == null) || (obj.getClass() != this.getClass())){
+			return false;
+		}
+		
+		Employee employee = (Employee) obj;
+		if(this.getId().equals(employee.getId())){
+			return true;
+		}
+		
+		return false;
 	}
 }
